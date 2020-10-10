@@ -67,7 +67,7 @@ app.get("/restaurant/:name", (req, res)=>{
 MongoClient.connect(mongourl,(err, connection)=>{
 	if(err) throw err;
 	db = connection.db("zomato");
-	app.listen(2000, (err)=>{
+	app.listen(process.env.PORT || 2000, (err)=>{
 		if(err) throw err;
 		console.log("Server is running");
 	});
