@@ -6,6 +6,7 @@ const express = require("express"),
 	  morgan  = require("morgan"),
 	  fs      = require("fs"),
 	  path    = require("path"),
+	  port    = process.env.PORT || 2000;
 	  accessLogStream = fs.createWriteStream(path.join(__dirname, "access.log"), {flags:'a'});
 	  app     = express();
 var db;
@@ -17,7 +18,7 @@ app.use(morgan('tiny', {stream: accessLogStream}));
 
 //API ROUTES
 app.get("/", (req, res)=>{
-	res.send("<a href='/restaurant'>Restauant</a><br/><a href='/mealtype'>MealType</a>");
+	res.send("<a href='/restaurant'>Restauant</a><br/><a href='/mealtype'>MealType</a><br/><a href='/location'>Location</a>");
 });
 
 app.get("/mealtype", (req, res)=>{
@@ -61,13 +62,19 @@ app.get("/restaurant/:name", (req, res)=>{
 	})
 })
 
+app.get("/location", (req, res)=>{
+	db.collection("location").find().toArray((err, data)=>{
+		if(err) throw err;
+		res.send(data);
+	})
+});
 
 //MONGO CONNECTION AND SERVER CONNECTION
 
 MongoClient.connect(mongourl,(err, connection)=>{
 	if(err) throw err;
 	db = connection.db("zomato");
-	app.listen(process.env.PORT || 2000, (err)=>{
+	app.listen(port, (err)=>{
 		if(err) throw err;
 		console.log("Server is running");
 	});
