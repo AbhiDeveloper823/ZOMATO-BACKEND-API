@@ -16,7 +16,7 @@ var db;
 app.use(cors());
 app.use(morgan('tiny', {stream: accessLogStream}));
 app.use(bodyParser.urlencoded({extended:true}));
-
+app.use(bodyParser.json());
 //API ROUTES
 app.get("/", (req, res)=>{
 	res.send("<a href='/restaurant'>Restauant</a><br/><a href='/mealtype'>MealType</a><br/><a href='/location'>Location</a><br/><a href='/order'>Order</a>");
