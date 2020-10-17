@@ -7,6 +7,7 @@ const express = require("express"),
 	  fs      = require("fs"),
 	  path    = require("path"),
 	  port    = process.env.PORT || 2000;
+	  bodyParser = require("body-parser");
 	  accessLogStream = fs.createWriteStream(path.join(__dirname, "access.log"), {flags:'a'});
 	  app     = express();
 var db;
@@ -14,7 +15,7 @@ var db;
 //APP CONFIGURATION
 app.use(cors());
 app.use(morgan('tiny', {stream: accessLogStream}));
-
+app.use(bodyParser.urlencoded({extended:true}));
 
 //API ROUTES
 app.get("/", (req, res)=>{
