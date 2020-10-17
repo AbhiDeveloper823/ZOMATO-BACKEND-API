@@ -69,6 +69,19 @@ app.get("/location", (req, res)=>{
 	})
 });
 
+app.get("/order",(req, res)=>{
+	db.collection("order").find().toArray((err, data)=>{
+		if(err) throw err;
+		res.send(data);
+	})
+});
+app.post("/order", (req, res)=>{
+	db.collection("order").insertOne({body: req.body}, (err)=>{
+		if(err) throw err;
+		res.send("Order Placed!!");
+	});
+})
+
 //MONGO CONNECTION AND SERVER CONNECTION
 
 MongoClient.connect(mongourl,(err, connection)=>{
