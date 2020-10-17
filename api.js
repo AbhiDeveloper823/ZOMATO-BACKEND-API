@@ -77,7 +77,7 @@ app.get("/order",(req, res)=>{
 	})
 });
 app.post("/order", (req, res)=>{
-	db.collection("order").insertOne({body: req.body}, (err)=>{
+	db.collection("order").insert(req.body, (err)=>{
 		if(err) throw err;
 		res.send("Order Placed!!");
 	});
