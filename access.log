@@ -1,3 +1,10 @@
 GET / 304 - - 7.669 ms
 GET /restaurant 304 - - 156.028 ms
 GET /mealtype 304 - - 104.475 ms
+GET /order 304 - - 232.278 ms
+GET / 304 - - 1.633 ms
+GET / 304 - - 0.928 ms
+GET / 304 - - 1.070 ms
+GET / 304 - - 0.526 ms
+GET / 304 - - 1.394 ms
+GET / 200 135 - 11.484 ms

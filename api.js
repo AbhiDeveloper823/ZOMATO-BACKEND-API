@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 //API ROUTES
 app.get("/", (req, res)=>{
-	res.send("<a href='/restaurant'>Restauant</a><br/><a href='/mealtype'>MealType</a><br/><a href='/location'>Location</a>");
+	res.send("<a href='/restaurant'>Restauant</a><br/><a href='/mealtype'>MealType</a><br/><a href='/location'>Location</a><br/><a href='/order'>Order</a>");
 });
 
 app.get("/mealtype", (req, res)=>{
