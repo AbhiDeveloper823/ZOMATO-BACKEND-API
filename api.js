@@ -77,8 +77,8 @@ app.get("/restaurant/:mealtype", (req, res)=>{
 
 })
 
-app.get("/restaurant/:name", (req, res)=>{
-	db.collection("restaurant").find({"name": req.params.name}).toArray((err, data)=>{
+app.get("/restaurant/details/:name", (req, res)=>{
+	db.collection("restaurant").find({"name":req.params.name}).toArray((err, data)=>{
 		if(err) throw err;
 		res.send(data);
 	})
