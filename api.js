@@ -30,7 +30,7 @@ app.get("/restaurant", (req, res)=>{
 	if(req.query.city){
 		query = {"city_name": req.query.city}
 	}
-	if(req.query.sort){
+	else if(req.query.sort){
 		mysort = {"cost": Number(req.query.sort)};
 	}
 	else if(req.query.mealtype){
