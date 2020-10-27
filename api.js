@@ -135,6 +135,35 @@ app.post("/mealtype", (req, res)=>{
 	})
 });
 
+//------DELETE API-----
+app.delete("/restaurant/:id", (req, res)=>{
+	db.collection('restaurant').remove({"_id": req.params.id}, (err)=>{
+		if(err) throw err;
+		res.send("Dleted");
+	})
+})
+
+app.delete("/mealtype/:id",(req, res)=>{
+	db.collection('mealtype').remove({"_id": Number(req.params.id)}, (err)=>{
+		if(err) throw err;
+		res.send("Deleted" + req.params.id);
+	})
+})
+
+app.delete("/location/:id", (req, res)=>{
+	db.collection('location').remove({"_id": Number(req.params.id)}, (err)=>{
+		if(err) throw err;
+		res.send("Deleted" + req.params.id);
+	})
+})
+
+app.delete("/order/:id", (req, res)=>{
+	db.collection('order').remove({"body.order_id": Number(req.params.id)}, (err)=>{
+		if(err) throw err;
+		res.send("Deleted!!");
+	})
+})
+
 //MONGO CONNECTION AND SERVER CONNECTION
 
 MongoClient.connect(mongourl,(err, connection)=>{
