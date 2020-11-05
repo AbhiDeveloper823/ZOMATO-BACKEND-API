@@ -137,7 +137,7 @@ app.post("/mealtype", (req, res)=>{
 
 //------DELETE API-----
 app.delete("/restaurant/:id", (req, res)=>{
-	db.collection('restaurant').remove({"_id": req.params.id}, (err)=>{
+	db.collection('restaurant').remove({"_id": Number(req.params.id)}, (err)=>{
 		if(err) throw err;
 		res.send("Dleted");
 	})
